@@ -108,3 +108,9 @@ ENDFUNCTION()
 
 STRING(TOLOWER ${CORTEX_TYPE} CORTEX_TYPE_LOWER)
 INCLUDE(gcc_cortex_${CORTEX_TYPE_LOWER})
+
+
+FUNCTION(CORTEX_ENABLE_SEMIHOSTING TARGET)
+target_compile_options(${TARGET} INTERFACE "-specs=rdimon.specs")
+target_link_libraries(${TARGET} rdimon)
+ENDFUNCTION()
